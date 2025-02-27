@@ -2,12 +2,18 @@
 //can be either Laptop or Desktop, but never just Computer-type objects themselves
 // edited Feb 27 - Sydney Woods
 
+//Role 5 implement whitelist-style input validation for desktop attributes
+//the only acceptable inputs for CPU type are i5 and i7, RAM size are 16 and 32, disk size are 512 and 1024, 
+//and GPU type are Nvidia and AMD
+//Edited Feb 27 - Nguyen Ngoc Tam
+
 // summary of changes made
 // changed arraylist tope to store object instead of computer to accomodate laptop and desktop
 // changed the addComputer method to directly create laptop and desktop objects
 // changed the showComputers method to call the overridden toString method for each object
 // changed the editComputer method to replace the old object with a new one
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,6 +23,8 @@ public class ManageComputers {
 
         // Changed ArrayList type to store Laptop and Desktop instead of Computer
         ArrayList<Object> computers = new ArrayList<>(); // Use Object since Laptop & Desktop are no longer Computer
+
+        
 
         Scanner s = new Scanner(System.in);
         String menuOption="";
@@ -113,14 +121,44 @@ public class ManageComputers {
         computerType=s.nextLine();
         computerType=computerType.toLowerCase(); //Convert to lower case for comparison purposes
 
+        //Role 5 - implement whitelist-style input validation for desktop attributes
+        ArrayList<String> validCPU= new ArrayList<>();
+        validCPU.add("i5");
+        validCPU.add("i7");
+        ArrayList<String> validRAM= new ArrayList<>();
+        validRAM.add("16");
+        validRAM.add("32");
+        ArrayList<String> validDisk= new ArrayList<>();
+        validDisk.add("512");
+        validDisk.add("1024");
+        ArrayList<String> validGPU= new ArrayList<>();
+        validGPU.add("Nvidia");
+        validGPU.add("AMD");
+        
+        
         System.out.print("Enter CPU (i5/i7): ");
         String CPU = s.nextLine();
-
+        while(!validCPU.contains(CPU)){
+            System.out.println("Invalid CPU entered!");
+            System.out.print("Enter CPU (i5/i7): ");
+            CPU = s.nextLine();
+        }
+        
         System.out.print("Enter RAM (16/32): ");
         String RAM = s.nextLine();
+        while(!validRAM.contains(RAM)){
+            System.out.println("Invalid RAM entered!");
+            System.out.print("Enter RAM (16/32): ");
+            RAM = s.nextLine();
+        }
 
         System.out.print("Enter Disk (512/1024): ");
         String disk = s.nextLine();
+        while(!validDisk.contains(disk)){
+            System.out.println("Invalid disk entered!");
+            System.out.print("Enter disk (512/1024): ");
+            disk = s.nextLine();
+        }
 
         switch(computerType) {
 
@@ -135,6 +173,11 @@ public class ManageComputers {
             case "d": 
                 System.out.print("Enter GPU (Nvidia/AMD): ");
                 String GPUType = s.nextLine();
+                while(!validGPU.contains(GPUType)){
+                    System.out.println("Invalid GPU entered!");
+                    System.out.print("Enter GPU(Nvidia/AMD): ");
+                    GPUType = s.nextLine();
+                }
                 computers.add(new Desktop(CPU, RAM, disk, GPUType)); // Directly create Desktop object
                 break;
 
@@ -189,6 +232,14 @@ public class ManageComputers {
                 System.out.println("Editing a Desktop:");
                 System.out.print("Enter new GPU (Nvidia/AMD): ");
                 String GPUType = s.nextLine();
+                ArrayList<String> validGPU= new ArrayList<>();
+                validGPU.add("Nvidia");
+                validGPU.add("AMD");
+                while(!validGPU.contains(GPUType)){
+                    System.out.println("Invalid GPU entered!");
+                    System.out.print("Enter GPU(Nvidia/AMD): ");
+                    GPUType = s.nextLine();
+                }
                 computers.set(computerListNumberToEdit, new Desktop(((Desktop) comp).getCPU(), ((Desktop) comp).getRAM(), ((Desktop) comp).getDisk(), GPUType)); // Replace with new Desktop object
             }
         } else {
