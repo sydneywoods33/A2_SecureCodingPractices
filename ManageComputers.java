@@ -166,6 +166,14 @@ public class ManageComputers {
             case "l": 
                 System.out.print("Enter screen size (13/14): ");
                 String screenSize = s.nextLine();
+                ArrayList<String> validScreenSize = new ArrayList<>();
+                validScreenSize.add("13");
+                validScreenSize.add("14");
+                while(!validScreenSize.contains(screenSize)){
+                    System.out.println("Invalid screen size entered!");
+                    System.out.print("Enter screen size (13/14): ");
+                    screenSize = s.nextLine();
+                }
                 computers.add(new Laptop(CPU, RAM, disk, screenSize)); // Directly create Laptop object
                 break;
             
@@ -227,6 +235,14 @@ public class ManageComputers {
                 System.out.println("Editing a Laptop:");
                 System.out.print("Enter new screen size (13/14): ");
                 String screenSize = s.nextLine();
+                ArrayList<String> validScreenSize = new ArrayList<>();
+                validScreenSize.add("13");
+                validScreenSize.add("14");
+                while(!validScreenSize.contains(screenSize)){
+                    System.out.println("Invalid screen size entered!");
+                    System.out.print("Enter screen size (13/14): ");
+                    screenSize = s.nextLine();
+                }
                 computers.set(computerListNumberToEdit, new Laptop(((Laptop) comp).getCPU(), ((Laptop) comp).getRAM(), ((Laptop) comp).getDisk(), screenSize)); // Replace with new Laptop object
             } else if (comp instanceof Desktop) {
                 System.out.println("Editing a Desktop:");
