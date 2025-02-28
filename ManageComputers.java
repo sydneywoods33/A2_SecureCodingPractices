@@ -7,8 +7,13 @@
 //and GPU type are Nvidia and AMD
 //Edited Feb 27 - Nguyen Ngoc Tam
 
+//Role 6 implement whitelist-style input validation for laptop attributes
+//the only acceptable inputs for CPU type are i5 and i7, RAM size are 16 and 32, disk size are 512 and 1024,
+//and screen size are 13 and 14
+//Edited Feb 28 - Maxwell Souchereau
+
 // summary of changes made
-// changed arraylist tope to store object instead of computer to accomodate laptop and desktop
+// changed arraylist type to store object instead of computer to accommodate laptop and desktop
 // changed the addComputer method to directly create laptop and desktop objects
 // changed the showComputers method to call the overridden toString method for each object
 // changed the editComputer method to replace the old object with a new one
@@ -135,6 +140,10 @@ public class ManageComputers {
         validGPU.add("Nvidia");
         validGPU.add("AMD");
         
+        //Role 6 - implement whitelist-style input validation for laptop attributes
+        ArrayList<String> validScreenSize = new ArrayList<>();
+        validScreenSize.add("13");
+        validScreenSize.add("14");
         
         System.out.print("Enter CPU (i5/i7): ");
         String CPU = s.nextLine();
@@ -166,9 +175,6 @@ public class ManageComputers {
             case "l": 
                 System.out.print("Enter screen size (13/14): ");
                 String screenSize = s.nextLine();
-                ArrayList<String> validScreenSize = new ArrayList<>();
-                validScreenSize.add("13");
-                validScreenSize.add("14");
                 while(!validScreenSize.contains(screenSize)){
                     System.out.println("Invalid screen size entered!");
                     System.out.print("Enter screen size (13/14): ");
