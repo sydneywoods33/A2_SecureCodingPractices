@@ -1,24 +1,32 @@
-//Manage Computers program: maintains an ArrayList of Computer objects, 
-//can be either Laptop or Desktop, but never just Computer-type objects themselves
-// edited Feb 27 - Sydney Woods
+/**
+ * The ManageComputers program maintains an ArrayList of Computer objects, which can be either
+ * Laptop or Desktop objects, but never just Computer-type objects themselves. The program allows
+ * users to add, delete, and edit computers, with input validation for specific attributes.
+ *
+ * Key Features:
+ * - The program uses composition instead of inheritance, storing Laptop and Desktop objects in an
+ *   ArrayList of type Object to accommodate both types.
+ * - Input validation is implemented using a whitelist approach for both Desktop and Laptop attributes:
+ *   - For Desktop: CPU type (i5, i7), RAM size (16, 32), disk size (512, 1024), and GPU type (Nvidia, AMD).
+ *   - For Laptop: CPU type (i5, i7), RAM size (16, 32), disk size (512, 1024), and screen size (13, 14).
+ * - The program provides a menu-driven interface for adding, deleting, and editing computers.
+ * - Immutable Laptop and Desktop objects are replaced with new instances during editing.
+ * 
+ * Changes made:
+ * 1. Changed ArrayList type to store Object to accommodate both Laptop and Desktop objects.
+ * 2. Updated the addComputer method to directly create Laptop and Desktop objects.
+ * 3. Updated the showComputers method to call the overridden toString method for each object.
+ * 4. Updated the editComputer method to replace the old object with a new one.
+ * 5. Implemented whitelist-style input validation for Desktop and Laptop attributes.
+ *
+ * @author Sydney Woods (Role 2: COnvert Desktop and laptop to use composition)
+ * @author Nguyen Ngoc Tam (Role 5: Desktop input validation)
+ * @author Maxwell Souchereau (Role 6: Laptop input validation)
+ * @author Grimm-mmirG (Role 8: Updating documentation for readability)
+ * @version 1.0
+ * @since March 04, 2025
+ */
 
-//Role 5 implement whitelist-style input validation for desktop attributes
-//the only acceptable inputs for CPU type are i5 and i7, RAM size are 16 and 32, disk size are 512 and 1024, 
-//and GPU type are Nvidia and AMD
-//Edited Feb 27 - Nguyen Ngoc Tam
-
-//Role 6 implement whitelist-style input validation for laptop attributes
-//the only acceptable inputs for CPU type are i5 and i7, RAM size are 16 and 32, disk size are 512 and 1024,
-//and screen size are 13 and 14
-//Edited Feb 28 - Maxwell Souchereau
-
-// summary of changes made
-// changed arraylist type to store object instead of computer to accommodate laptop and desktop
-// changed the addComputer method to directly create laptop and desktop objects
-// changed the showComputers method to call the overridden toString method for each object
-// changed the editComputer method to replace the old object with a new one
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,8 +34,8 @@ public class ManageComputers {
 
     public static void main(String args[]) {
 
-        // Changed ArrayList type to store Laptop and Desktop instead of Computer
-        ArrayList<Object> computers = new ArrayList<>(); // Use Object since Laptop & Desktop are no longer Computer
+        // ArrayList to store Laptop and Desktop objects
+        ArrayList<Object> computers = new ArrayList<>();
 
         
 
@@ -43,27 +51,17 @@ public class ManageComputers {
             menuOption = getMenuSelection(s);
 
             switch(menuOption) {
-                //Add new computer
-                case "a": 
-
+                case "a": //Add new computer
                     addComputer(computers,s);
-
                     break;
 
-                //Delete a computer    
-                case "d": 
-
+                case "d": //Delete a computer 
                     deleteComputer(computers,s);
-
                     break;
 
-                //Edit a computer    
-                case "e": 
-
+                case "e": //Edit a computer
                     editComputer(computers, s);
-
                     break;
-
             }
 
         } while ( ! menuOption.equals("x") ); //Stop when "x" is entered
