@@ -23,7 +23,7 @@ public class Laptop {
     private final Computer computer; 
 
     // Screen size of the laptop
-    private String screenSize;
+    private final String screenSize;
 
     /**
     * No-argument constructor that initializes the Laptop with default values.
@@ -45,15 +45,6 @@ public class Laptop {
     */
     public Laptop(String CPU, String RAM, String disk, String screenSize) {
         this.computer = new Computer(CPU, RAM, disk); // Initialize Computer instance
-        this.screenSize = screenSize;
-    }
-
-    /**
-    * Sets the screen size of the laptop.
-    *
-    * @param screenSize The screen size to set.
-    */
-    public void setScreenSize(String screenSize) {
         this.screenSize = screenSize;
     }
 

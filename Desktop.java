@@ -21,7 +21,7 @@ public class Desktop {
     private final Computer computer; 
 
     // GPU type for the desktop computer
-    private String GPUType;
+    private final String GPUType;
 
     /**
      * No-argument constructor that initializes the Desktop with default values.
@@ -43,15 +43,6 @@ public class Desktop {
      */
     public Desktop(String CPU, String RAM, String disk, String GPUType) {
         this.computer = new Computer(CPU, RAM, disk); // Initialize Computer instance
-        this.GPUType = GPUType;
-    }
-
-    /**
-     * Sets the GPU type of the desktop computer.
-     *
-     * @param GPUType The GPU type to set.
-     */
-    public void setGPUType(String GPUType) {
         this.GPUType = GPUType;
     }
 
