@@ -13,7 +13,7 @@
  * - Immutable Laptop and Desktop objects are replaced with new instances during editing.
  * 
  * Changes made:
- * 1. Changed ArrayList type to store Object to accommodate both Laptop and Desktop objects.
+ * 1. Changed ArrayList type to store Object to accommodate both Laptop and Desktop objects (Role 4).
  * 2. Updated the addComputer method to directly create Laptop and Desktop objects.
  * 3. Updated the showComputers method to call the overridden toString method for each object.
  * 4. Updated the editComputer method to replace the old object with a new one.
@@ -80,7 +80,7 @@ public class ManageComputers {
         System.out.println("A) Add Computer");
         System.out.println("D) Delete Computer");
         System.out.println("E) Edit Computer");
-        System.out.println("X) eXit");
+        System.out.println("X) Exit");
         System.out.println("----------");
 
         //Get menu selection from keyboard
